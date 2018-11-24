@@ -50,8 +50,8 @@ class OrderRobot:
         self.t = raw_input('starttime:\n 1---09:00-10:00;\n2---10:00-11:00;\n3---11:00-12:00;\n4---18:00-19:00;\n5---19:00-20:00;\n6---20:00-21:00\n7---11:30-12:30;\n8---12:30-13:30;\n>')
         self.starttime = self.time[self.t]
         self.loginPostdata = urllib.urlencode({
-            'IDToken1': '220184427',
-            'IDToken2': '3e146f868cc3a2881175b668b1fb8347',
+            'IDToken1': '用户名',
+            'IDToken2': '密码',
             'IDButton': 'Submit',
             'goto': 'http://yuyue.seu.edu.cn/eduplus/order/initOrderIndex.do?sclId=1',
             'gx_charset': 'utf-8'
@@ -72,7 +72,7 @@ class OrderRobot:
         )
 
         result = self.opener.open(req).read()
-        if '于振华' in result:
+        if '你的名字' in result:
             self.islogin = True
             print 'login successfuly!'
             return self.islogin
@@ -88,8 +88,8 @@ class OrderRobot:
             'orderVO.useTime': self.orderday.strftime(DATEFORMAT_Ymd) + self.starttime,
             'orderVO.itemId': '10',
             'orderVO.useMode': '2',
-            'useUserIds': '119260',
-            'orderVO.phone': '18361227116',
+            'useUserIds': '你朋友的ID',    #需要抓包看一下
+            'orderVO.phone': '你的手机号',
             'orderVO.remark': '',
             'validateCode': validateNum
         })
